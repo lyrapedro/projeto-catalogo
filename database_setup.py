@@ -2,25 +2,27 @@ from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
- 
+
 Base = declarative_base()
+
 
 class User(Base):
     __tablename__ = 'user'
 
-    name = Column(String(80), nullable = False)
-    email = Column(String(80), nullable = False)
+    name = Column(String(80), nullable=False)
+    email = Column(String(80), nullable=False)
     picture = Column(String(80))
-    id = Column(Integer, primary_key = True)
+    id = Column(Integer, primary_key=True)
 
     @property
     def serialize(self):
         return{
-            'name'  :self.name,
-            'email' :self.email,
-            'picture'   :self.picture,
-            'id'    :self.id,
+            'name': self.name,
+            'email': self.email,
+            'picture': self.picture,
+            'id': self.id
         }
+
 
 class Restaurant(Base):
     __tablename__ = 'restaurant'
